@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://v7j11p8uyx7i"]
+
+[ext_resource type="Script" path="res://scenes/score/score.gd" id="1_440du"]
+[ext_resource type="LabelSettings" uid="uid://nwhdhcws1ijx" path="res://assets/LG_BL_56.tres" id="2_6thur"]
+[ext_resource type="LabelSettings" uid="uid://dpnr5y7j42yjk" path="res://assets/LG_WH_20.tres" id="3_wisne"]
+[ext_resource type="AudioStream" uid="uid://rp3ctnest0h7" path="res://assets/audio/game_over.wav" id="4_qbvav"]
+[ext_resource type="AudioStream" uid="uid://dxybe63c1tnwy" path="res://assets/audio/score.wav" id="5_hqsv8"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_440du")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MC" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = -150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 9
+
+[node name="ScoreText" type="Label" parent="CanvasLayer/MC/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Score:"
+label_settings = ExtResource("3_wisne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="CanvasLayer/MC/HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("3_wisne")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DieLabel" type="Label" parent="CanvasLayer/MC/VBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "You lost one heart!"
+label_settings = ExtResource("2_6thur")
+
+[node name="GOSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qbvav")
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hqsv8")

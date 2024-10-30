@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh7s7hd6rtuit"]
+
+[ext_resource type="Texture2D" uid="uid://lbt0abowojs8" path="res://assets/images/paddle/50-Breakout-Tiles.png" id="1_bykcy"]
+[ext_resource type="Script" path="res://scenes/paddle/paddle.gd" id="1_dfm3t"]
+[ext_resource type="Texture2D" uid="uid://daoka2f2oy3nv" path="res://assets/images/paddle/51-Breakout-Tiles.png" id="2_ik5rs"]
+[ext_resource type="Texture2D" uid="uid://dyp3xf7le2q3d" path="res://assets/images/paddle/52-Breakout-Tiles.png" id="3_1kqqy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fq7vn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bykcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ik5rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1kqqy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky00h"]
+size = Vector2(473.333, 120)
+
+[node name="Paddle" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+collision_mask = 0
+script = ExtResource("1_dfm3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fq7vn")
+autoplay = "default"
+frame_progress = 0.879746
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.27157e-05, 3.33334)
+shape = SubResource("RectangleShape2D_ky00h")
